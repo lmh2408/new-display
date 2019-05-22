@@ -1,0 +1,76 @@
+{% extends 'editor/layout.html' %}
+
+{% block title %}Add/Remove sections{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h2>Add an article</h2>
+            </div>
+        </div>
+        {% if messages %}
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    {% for message in messages %}
+                        <div
+                            class="alert {% if message.extra_tags %}{{ message.extra_tags }}{% endif %} my-4"
+                            role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        <form action="{% url 'news:editorArticleAdd' %}" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col">
+                    <label for="sectionSelect">
+                        <select class="form-control" name="section" id="sectionSelect">
+                            <option value="" disabled selected>Choose a section</option>
+                            {% for s in section %}
+                                <option value="{{ s.section }}">{{ s.section }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                </div>
+                <div class="col">
+                    <input type="text" name="author" class="form-control" placeholder="Enter author">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" name="header" placeholder="Enter headline">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <textarea name="subheader" id="" cols="30" rows="3" class="form-control" placeholder="Enter sub-headline"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="image">Upload header image
+                        <input type="file" class="form-control-file" accept="image/*" name="thumbnail" id="image">
+                    </label>
+                </div>
+                <div class="col">
+                    <img src="https://via.placeholder.com/200" alt="" style="height:10rem">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <textarea name="body" id="" cols="30" rows="10" class="form-control" placeholder="Enter body"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <button class="btn btn-primary" type="submit">Upload Article</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

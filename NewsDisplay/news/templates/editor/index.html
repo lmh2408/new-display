@@ -1,0 +1,55 @@
+{% extends 'editor/layout.html' %}
+
+{% block title %}Editor View{% endblock %}
+
+{% block body %}
+
+    <div class="container pt-5">
+        {% if messages %}
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    {% for message in messages %}
+                        <div
+                            class="alert {% if message.extra_tags %}{{ message.extra_tags }}{% endif %} my-4"
+                            role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="row my-4 justify-content-center">
+            <div class="col-10 col-md-5 col-lg-4">
+                <a href="{% url 'news:editorSection' %}">
+                    <button class="btn btn-info btn-block shadow" type="button">Add/Remove sections</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="row my-4 justify-content-center">
+            <div class="col-10 col-md-5 col-lg-4">
+                <a href="{% url 'news:editorArticleAdd' %}">
+                    <button class="btn btn-info btn-block shadow" type="button">Add an article</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="row my-4 justify-content-center">
+            <div class="col-10 col-md-5 col-lg-4">
+                <a href="{% url 'news:editorArticleEdit' %}">
+                    <button class="btn btn-info btn-block shadow" type="button">Edit an article</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="row my-4 justify-content-center">
+            <div class="col-10 col-md-5 col-lg-4">
+                <a href="{% url 'news:editorArticleEdit' %}">
+                    <button class="btn btn-info btn-block shadow" type="button">Edit front page view</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

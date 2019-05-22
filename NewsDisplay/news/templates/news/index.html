@@ -1,0 +1,28 @@
+{% extends 'news/layout.html' %}
+
+{% block title %}News Template{% endblock %}
+
+{% block body %}
+
+    <div id="root"></div>
+
+{% endblock %}
+
+{% block script %}
+
+<script type="text/babel">
+
+    class App extends React.Component{
+        render(){
+            return (
+                <h1>Hello</h1>
+            );    
+        };
+    };
+
+    const docRoot = document.querySelector("#root");
+    ReactDOM.render(<App />, docRoot);
+
+</script>
+
+{% endblock %}

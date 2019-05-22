@@ -1,0 +1,58 @@
+{% extends 'editor/layout.html' %}
+
+{% block title %}Add/Remove sections{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h2>Edit an article</h2>
+            </div>
+        </div>
+
+        {% if messages %}
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    {% for message in messages %}
+                        <div
+                            class="alert {% if message.extra_tags %}{{ message.extra_tags }}{% endif %} my-4"
+                            role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if article %}
+            {% for a in article %}
+                <div class="row">
+                    <a class="col border" href="{% url 'news:editorArticleEditView' articleID=a.id %}">
+                        <div class="row">
+                            <div class="col">
+                                <img src="{{ a.thumbnail.url }}" alt="{{ a.thumbnail.name }}" height="100" width="100">
+                            </div>
+                            <div class="col">
+                                <span><b>{{ a.section.section }}:</b></span>
+                            </div>
+                            <div class="col">
+                                <span>{{ a.header }}</span>
+                            </div>
+                            <div class="col">
+                                Last updated: {{ a.last_updated|date:'d-m-Y H:i' }}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="row">
+                <div class="col text-center">
+                    <h3>No article to edit!</h3>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
