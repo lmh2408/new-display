@@ -1,0 +1,13 @@
+.frontContainer {
+  padding: 0.5rem; }
+
+.subImageContainer {
+  display: block;
+  overflow: hidden;
+  width: 5rem;
+  height: 4.5rem; }
+  .subImageContainer img {
+    max-width: 100%;
+    height: auto; }
+
+/*# sourceMappingURL=style.css.map */

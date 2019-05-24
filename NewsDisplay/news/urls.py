@@ -15,4 +15,6 @@ urlpatterns = [
     path('editor/article/add', views.editorArticleAdd, name='editorArticleAdd'),
     path('editor/article/edit', views.editorArticleEdit, name='editorArticleEdit'),
     path('editor/article/editview/<articleID>', views.editorArticleEditView, name='editorArticleEditView'),
+    path('editor/front', views.editorFrontPage, name='editorFrontPage'),
+    path('editor/front/remove', views.editorFrontRemove, name='editorFrontRemove'),
 ]

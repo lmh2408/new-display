@@ -17,3 +17,11 @@ class ArticleEdit(forms.Form):
     subheader = forms.CharField(max_length=400)
     thumbnail = forms.ImageField(required=False)
     body = forms.CharField()
+
+
+class FrontAdd(forms.Form):
+    article = forms.ModelChoiceField(queryset=Article.objects.all(), to_field_name='id')
+
+
+class FrontRemove(forms.Form):
+    article = forms.ModelMultipleChoiceField(queryset=FrontPage.objects.all(), to_field_name='id')

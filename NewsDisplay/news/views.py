@@ -11,8 +11,22 @@ from .models import *
 
 # Create your views here.
 def index(request):
+    front = FrontPage.objects.all()[:4]
+    section = Section.objects.all()
 
-    return render(request, 'news/index.html')
+    catag = []
+    for s in section:
+        a = Article.objects.filter(section=s)[:3]
+        catag.append({
+            'section': s,
+            'article': a,
+        })
+
+    context = {
+        'front': front,
+        'catag': catag,
+    }
+    return render(request, 'news/index.html', context)
 
 
 @require_http_methods(["GET", "POST"])
@@ -120,7 +134,8 @@ def editorArticleAdd(request):
 
             messages.add_message(request, messages.SUCCESS, 'Added article into database!', extra_tags='alert-success')
             return redirect(reverse('news:editorArticleEditView', kwargs={'articleID': a.id}))
-
+        else:
+            messages.add_message(request, messages.ERROR, 'Invalid input!', extra_tags='alert-danger')
         return redirect(reverse('news:editorArticleAdd'))
     else:
         section = Section.objects.all()
@@ -180,5 +195,46 @@ def editorArticleEditView(request, articleID):
 
 @require_http_methods(["GET","POST"])
 @login_required(login_url='news:editorLogin')
-def editorFrontPage(request, articleID):
-    return
+def editorFrontPage(request):
+    if request.method == 'POST':
+        f = FrontAdd(request.POST)
+
+        if f.is_valid():
+            fp = FrontPage(
+                article=f.cleaned_data['article']
+            )
+            try:
+                fp.save()
+            except:
+                messages.add_message(request, messages.ERROR, 'No duplicate allowed', extra_tags='alert-danger')
+                return redirect(reverse('news:editorFrontPage'))
+
+            messages.add_message(request, messages.SUCCESS, 'Article added to Front.', extra_tags='alert-success')
+        else:
+            messages.add_message(request, messages.ERROR, 'Invalid input!', extra_tags='alert-danger')
+
+        return redirect(reverse('news:editorFrontPage'))
+
+    else:
+        front = FrontPage.objects.all()
+        article = Article.objects.all()
+        context = {
+            'front': front,
+            'article': article,
+        }
+        return render(request, 'editor/frontEdit.html', context)
+
+
+@require_http_methods(["POST"])
+@login_required(login_url='news:editorLogin')
+def editorFrontRemove(request):
+    f = FrontRemove(request.POST)
+
+    if f.is_valid():
+        for q in f.cleaned_data['article']:
+            q.delete()
+        messages.add_message(request, messages.SUCCESS, 'Removed article(s) from Front.', extra_tags='alert-success')
+    else:
+        messages.add_message(request, messages.ERROR, 'Error removing article(s) from Front.', extra_tags='alert-danger')
+
+    return redirect(reverse('news:editorFrontPage'))

@@ -1,0 +1,26 @@
+.frontContainer {
+    padding:0.5rem;
+}
+
+// .frontImageContainer {
+// 	height: 13rem;
+// 	width: 20rem;
+// 	overflow: hidden;
+//
+//     img {
+//         max-width:100%;
+//         height:auto;
+//     }
+// }
+
+.subImageContainer {
+    display: block;
+	overflow: hidden;
+	width: 5rem;
+	height: 4.5rem;
+
+    img {
+        max-width:100%;
+        height:auto;
+    }
+}
