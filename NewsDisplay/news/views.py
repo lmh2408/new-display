@@ -17,16 +17,40 @@ def index(request):
     catag = []
     for s in section:
         a = Article.objects.filter(section=s)[:3]
-        catag.append({
-            'section': s,
-            'article': a,
-        })
+        if a:
+            catag.append({
+                'section': s,
+                'article': a,
+            })
 
     context = {
         'front': front,
         'catag': catag,
     }
     return render(request, 'news/index.html', context)
+
+
+def section(request, sectionName):
+    try:
+        articles = Article.objects.filter(section=Section.objects.get(section=sectionName))[:10]
+    except:
+        return redirect(reverse('news:index'))
+
+    context = {
+        'section': sectionName,
+        'articles': articles,
+        'articleDisplayNumber': 10,
+    }
+    return render(request, 'news/section.html', context)
+
+
+def article(request, articleID):
+    try:
+        article = Article.objects.get(id=articleID)
+    except:
+        return redirect(reverse('news:index'))
+
+    return render(request, 'news/article.html', {'article': article})
 
 
 @require_http_methods(["GET", "POST"])

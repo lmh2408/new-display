@@ -6,6 +6,9 @@ app_name = 'news'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('section/<sectionName>', views.section, name='section'),
+    path('article/<int:articleID>', views.article, name='article'),
+    
     path('editor', views.editorLogin, name='editorLogin'),
     path('editor/logout', views.editorLogout, name='editorLogout'),
     path('editor/view', views.editorView, name='editorView'),

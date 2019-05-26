@@ -1,0 +1,49 @@
+{% extends 'news/layout.html' %}
+
+{% block title %}{{ section }}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <!-- section name -->
+        <div class="row pageSectionBigName justify-content-center">
+            <div class="col col-md-7">
+                <span>{{ section }}</span>
+            </div>
+        </div>
+
+        <!-- section articles -->
+        {% for a in articles %}
+            <div class="row pageSectionArticleContainer">
+                <div class="col">
+
+                    <!-- article thumbnail -->
+                    <a class="row justify-content-center" href="{% url 'news:article' articleID=a.id %}">
+                        <img class="col-12 col-md-7 pageSectionArticleThumbnail" src="{{ a.thumbnail.url }}" alt="{{ a.thumbnail.header }}">
+                    </a>
+
+                    <!-- article header -->
+                    <div class="row justify-content-center">
+                        <a class="col-12 col-md-7 pageSectionArticleHeader" href="{% url 'news:article' articleID=a.id %}">
+                            <!-- date -->
+                            <span>{{ a.last_updated|date:'d/m/y' }}</span>
+                            <br>
+                            <!-- header -->
+                            <span>{{ a.header }}</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+
+        <!-- show more article buttion -->
+        <div class="row">
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

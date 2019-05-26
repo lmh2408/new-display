@@ -1,0 +1,58 @@
+{% extends 'news/layout.html' %}
+
+{% block title %}{{ article.header }}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col col-md-11">
+
+                <!-- section name -->
+                <div class="row pageArticleSection">
+                    <div class="col">
+                        <a href="{% url 'news:section' sectionName=article.section.section %}"><span>{{ article.section.section }}</span></a>
+                    </div>
+                </div>
+
+                <!-- Article header -->
+                <div class="row pageArticleHeader">
+                    <div class="col">
+                        <span>{{ article.header }}</span><br>
+                    </div>
+                </div>
+
+                <!-- date & author -->
+                <div class="row pageArticleDate">
+                    <div class="col">
+                        <span>Last updated: {{ article.last_updated }}</span><br>
+                        <span>Author: {{ article.author }}</span>
+                    </div>
+                </div>
+
+                <!-- article subheader -->
+                <div class="row pageArticleSubheader">
+                    <div class="col">
+                        <span>{{ article.subheader }}</span>
+                    </div>
+                </div>
+
+                <!-- article thumbnail -->
+                <div class="row pageArticleImg">
+                    <img class="col" src="{{ article.thumbnail.url }}" alt="{{ article.header }}">
+                </div>
+
+
+                <div class="row pageArticleBody">
+                    <div class="col">
+                        <p>{{ article.body }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

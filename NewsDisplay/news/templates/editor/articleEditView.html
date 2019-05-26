@@ -47,7 +47,7 @@
 
                 <div class="col">
                     <h4>Author:</h4>
-                    <input type="text" name="author" class="form-control" placeholder="Enter author" value="{{ article.author }}">
+                    <input type="text" name="author" class="form-control" placeholder="Enter author" value="{{ article.author }}" maxlength="100">
                 </div>
             </div>
 
@@ -55,14 +55,14 @@
             <div class="row">
                 <div class="col">
                     <h4>Header:</h4>
-                    <input name="header" id="header" type="text" class="form-control" value="{{ article.header }}">
+                    <input name="header" id="header" type="text" class="form-control" value="{{ article.header }}" maxlength="200">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
                     <h4>Subheader:</h4>
-                    <textarea name="subheader" id="" cols="30" rows="3" class="form-control" placeholder="Enter sub-headline">{{ article.subheader }}</textarea>
+                    <textarea name="subheader" id="" cols="30" rows="3" class="form-control" placeholder="Enter sub-headline" maxlength="400">{{ article.subheader }}</textarea>
                 </div>
             </div>
 

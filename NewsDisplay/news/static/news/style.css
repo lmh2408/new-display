@@ -1,13 +1,120 @@
-.frontContainer {
-  padding: 0.5rem; }
-
-.subImageContainer {
-  display: block;
-  overflow: hidden;
-  width: 5rem;
-  height: 4.5rem; }
-  .subImageContainer img {
+.bigFrontImgContainer {
+  height: 15rem;
+  overflow: hidden; }
+  .bigFrontImgContainer img {
     max-width: 100%;
     height: auto; }
+
+.dateFont {
+  font-weight: lighter;
+  font-size: 1rem; }
+
+.bigHeaderFont {
+  font-size: 1.2rem;
+  font-weight: bold; }
+
+.subFrontImgContainer {
+  height: 5rem;
+  overflow: hidden;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%; }
+
+.subHeaderFont {
+  font-weight: bold;
+  font-size: 1rem; }
+
+.sectionBig {
+  font-weight: bold;
+  font-size: 1.4rem; }
+
+.sectionImgContainer {
+  height: 4.5rem;
+  overflow: hidden;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%; }
+
+.sectionHeaderContainer span:first-child {
+  font-weight: lighter; }
+.sectionHeaderContainer span:last-child {
+  font-weight: bold; }
+
+.pageSectionBigName {
+  margin-bottom: 1.6rem;
+  margin-top: 1.6rem; }
+  .pageSectionBigName span {
+    font-size: 1.4rem; }
+
+@media (min-width: 768px) {
+  .pageSectionBigName {
+    margin-bottom: 3rem;
+    margin-top: 2rem; }
+    .pageSectionBigName span {
+      font-size: 1.6rem; } }
+.pageSectionArticleContainer {
+  margin-bottom: 2rem; }
+
+.pageSectionArticleThumbnail {
+  object-fit: cover;
+  max-width: 100%;
+  height: 9rem;
+  overflow: hidden; }
+
+@media (min-width: 768px) {
+  .pageSectionArticleThumbnail {
+    height: 14rem; } }
+.pageSectionArticleHeader span {
+  color: black; }
+.pageSectionArticleHeader span:first-child {
+  font-weight: lighter; }
+.pageSectionArticleHeader span:last-child {
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 0.5rem; }
+
+@media (min-width: 768px) {
+  .pageSectionArticleHeader span:first-child {
+    font-size: 1.1rem;
+    line-height: 2rem; }
+  .pageSectionArticleHeader span:last-child {
+    font-size: 1.3rem;
+    line-height: 1rem; } }
+.pageArticleSection {
+  margin-top: 1rem; }
+  .pageArticleSection span {
+    font-size: 1.5rem;
+    text-decoration: underline;
+    color: black; }
+
+.pageArticleHeader {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem; }
+  .pageArticleHeader span:first-child {
+    font-size: 1.7rem;
+    line-height: 2.2rem;
+    font-weight: bold; }
+
+.pageArticleDate {
+  margin-bottom: 1rem; }
+  .pageArticleDate span {
+    font-weight: lighter; }
+
+.pageArticleSubheader {
+  margin-bottom: 1rem;
+  text-align: justify; }
+
+.pageArticleImg {
+  margin-bottom: 1rem; }
+  .pageArticleImg img {
+    height: 14rem;
+    object-fit: cover;
+    max-width: 100%; }
+
+@media (min-width: 768px) {
+  .pageArticleImg img {
+    height: 24rem; } }
+.pageArticleBody {
+  text-align: justify; }
 
 /*# sourceMappingURL=style.css.map */
