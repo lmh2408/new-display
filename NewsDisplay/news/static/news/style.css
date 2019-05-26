@@ -1,44 +1,74 @@
-.bigFrontImgContainer {
-  height: 15rem;
-  overflow: hidden; }
-  .bigFrontImgContainer img {
-    max-width: 100%;
-    height: auto; }
+hr {
+  border-color: #c8c8c8;
+  margin-top: 1rem;
+  margin-bottom: 0.1rem; }
 
-.dateFont {
-  font-weight: lighter;
-  font-size: 1rem; }
+.pageIndexFrontSlogan {
+  margin-top: 1rem;
+  margin-bottom: 1rem; }
+  .pageIndexFrontSlogan span {
+    color: black;
+    font-size: 1.8rem;
+    font-weight: bold; }
 
-.bigHeaderFont {
-  font-size: 1.2rem;
-  font-weight: bold; }
-
-.subFrontImgContainer {
-  height: 5rem;
-  overflow: hidden;
-  max-width: 100%;
+.pageIndexFrontImg img {
+  height: 12.5rem;
   object-fit: cover;
-  object-position: 50% 50%; }
+  width: 100%; }
 
-.subHeaderFont {
-  font-weight: bold;
-  font-size: 1rem; }
+.pageIndexFrontHeader {
+  line-height: 1.4rem; }
+  .pageIndexFrontHeader span {
+    color: black; }
+  .pageIndexFrontHeader span:first-child {
+    font-weight: lighter; }
+  .pageIndexFrontHeader span:last-child {
+    font-size: 1.1rem;
+    font-weight: bold; }
 
-.sectionBig {
-  font-weight: bold;
-  font-size: 1.4rem; }
-
-.sectionImgContainer {
-  height: 4.5rem;
-  overflow: hidden;
-  max-width: 100%;
-  object-fit: cover;
-  object-position: 50% 50%; }
-
-.sectionHeaderContainer span:first-child {
+.pageIndexSubHeader span {
+  color: black; }
+.pageIndexSubHeader span:first-child {
   font-weight: lighter; }
-.sectionHeaderContainer span:last-child {
+.pageIndexSubHeader span:last-child {
   font-weight: bold; }
+
+@media (min-width: 768px) {
+  .pageIndexSubHeader {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; } }
+.pageIndexSectionName {
+  margin-top: 2rem;
+  margin-bottom: 1rem; }
+  .pageIndexSectionName span {
+    color: #4e4e4e;
+    font-size: 1.3rem;
+    font-weight: bold; }
+
+.pageIndexSectionImg img {
+  height: 10rem;
+  width: 100%;
+  object-fit: cover; }
+
+.pageIndexSectionHeader {
+  line-height: 1.3rem; }
+  .pageIndexSectionHeader span {
+    color: black; }
+  .pageIndexSectionHeader span:first-child {
+    font-weight: lighter;
+    font-size: 0.9rem; }
+  .pageIndexSectionHeader span:last-child {
+    font-weight: bold; }
+
+.pageIndexSectionSubHeader {
+  line-height: 1.3rem; }
+  .pageIndexSectionSubHeader span {
+    font-size: 0.9rem;
+    color: black; }
+  .pageIndexSectionSubHeader span:first-child {
+    font-weight: lighter; }
+  .pageIndexSectionSubHeader span:last-child {
+    font-weight: bold; }
 
 .pageSectionBigName {
   margin-bottom: 1.6rem;

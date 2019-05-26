@@ -4,105 +4,128 @@
 
 {% block body %}
 
-    <div class="container py-2">
+    <div class="container">
+
         <div class="row">
             <div class="col">
-                <h3>What's hot?</h3>
-            </div>
-        </div>
 
-        <!-- frontPage lastest -->
-        <div class="row justify-content-center mb-1">
-
-            <!-- big front -->
-            <a class="col-11 p-0 col-md-6 mb-2 mr-md-1" href="{% url 'news:article' articleID=front.0.article.id %}">
-
-                <!-- big image -->
-                <div class="row">
-                    <div class="col-12 p-0 bigFrontImgContainer">
-                        <img src="{{ front.0.article.thumbnail.url }}" alt="{{ front.0.article.header }}">
+                <!-- Front slogan -->
+                <div class="row pageIndexFrontSlogan justify-content-center">
+                    <div class="col col-md-9">
+                        <span>Lorem ipsum?</span>
                     </div>
                 </div>
 
-                <!-- big header -->
-                <div class="row">
-                    <div class="col-12 p-0 px-2 pb-2 bigFrontHeaderContainer">
-                        <span class="dateFont">{{ front.0.article.last_updated|date:'d/m/y' }}</span>
-                        <br>
-                        <span class="bigHeaderFont">{{ front.0.article.header }}</span>
-                    </div>
-                </div>
+                <div class="row justify-content-md-center">
+                    <!-- container -->
+                    <div class="col-12 col-md-9">
+                        <div class="row justify-content-md-between">
 
-            </a>
+                            <!-- front column -->
+                            <div class="col-12 col-md-6">
 
-            <!-- sub front  -->
-            <div class="col-11 col-md-5 ml-md-auto">
-                {% for f in front %}
-                    {% if forloop.counter0 != 0 %}
-                        <div class="row mb-3">
-                            <div class="col-12 p-0">
-                                <a class="row" href="{% url 'news:article' articleID=f.article.id %}">
-
-                                    <!-- thumbnail -->
-                                    <img class="col-3 p-0 mr-auto subFrontImgContainer" src="{{ f.article.thumbnail.url }}" alt="{{ f.article.header }}">
-
-                                    <!-- header & date -->
-                                    <div class="col p-0 pt-2 pl-2 ml-auto subFrontHeaderContainer">
-                                        <span class="dateFont">{{ f.article.last_updated|date:'d/m/y' }}</span>
-                                        <br>
-                                        <span class="subHeaderFont">{{ f.article.header }}</span>
-                                    </div>
-
+                                <!-- Front page image -->
+                                <a class="row pageIndexFrontImg" href="{% url 'news:article' articleID=front.0.article.id %}">
+                                    <img
+                                        class="col"
+                                        src="{{ front.0.article.thumbnail.url }}"
+                                        alt="{{ front.0.article.header }}">
                                 </a>
+
+                                <!-- front page header -->
+                                <div class="row pageIndexFrontHeader">
+                                    <div class="col">
+
+                                        <a href="{% url 'news:article' articleID=front.0.article.id %}">
+                                            <!-- front date -->
+                                            <span>{{ front.0.article.last_updated|date:'d/m/y' }}</span><br>
+
+                                            <!-- front header -->
+                                            <span>{{ front.0.article.header }}</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- subfront column -->
+                            <div class="col-12 col-md-6">
+
+                                {% for f in front %}
+                                    {% if forloop.counter0 != 0 %}
+                                        <hr class="mt-md-0">
+
+                                        <div class="pageIndexSubHeader">
+                                            <a href="{% url 'news:article' articleID=f.article.id %}">
+                                                <!-- subfront date -->
+                                                <span>{{ f.article.last_updated|date:'d/m/y' }}</span><br>
+
+                                                <!-- subfront header -->
+                                                <span>{{ f.article.header }}</span>
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+
                             </div>
                         </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-
-        <!-- section -->
-        <div class="row jusify-content-center justify-content-md-between">
-            {% for c in catag %}
-                <div class="col-11 col-md-5 p-0 mx-auto mx-md-0 mb-3">
-                    <div class="row">
-                        <div class="col p-0"><hr></div>
-                    </div>
-
-                    <!-- section name -->
-                    <div class="row mb-2">
-                        <a class="col" href="{% url 'news:section' sectionName=c.section.section %}">
-                            <span class="sectionBig">{{ c.section.section }}</span>
-                        </a>
-                    </div>
-
-                    <!-- section headlines -->
-                    {% for a in c.article %}
-                        <a class="row mb-2" href="{% url 'news:article' articleID=a.id %}">
-
-                            <!-- thumbnail -->
-
-                            <img class="col-3 p-0 mr-auto ml-1 sectionImgContainer" src="{{ a.thumbnail.url }}" alt="{{ a.header }}">
-
-
-                            <!-- headline -->
-                            <div class="col p-0 pl-3 ml-auto my-auto sectionHeaderContainer">
-
-                                <!-- date -->
-                                <span>{{ a.last_updated|date:'d/m/y' }}</span>
-                                <br>
-
-                                <!-- header -->
-                                <span>{{ a.header }}</span>
-                            </div>
-                        </a>
-                    {% endfor %}
-
-                    <div class="row">
-                        <div class="col p-0"><hr></div>
                     </div>
                 </div>
-            {% endfor %}
+
+
+                <!-- section -->
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-9">
+                        <div class="row">
+                            {% for c in catag %}
+                                <div class="col-12 col-md-6">
+                                    <!-- section name -->
+                                    <div class="row pageIndexSectionName">
+                                        <div class="col">
+                                            <a href="{% url 'news:section' sectionName=c.section.section %}"><span>{{ c.section.section }}</span></a>
+                                        </div>
+                                    </div>
+
+                                    <!-- section header -->
+                                    <!-- section header img -->
+                                    <a class="row pageIndexSectionImg" href="{% url 'news:article' articleID=c.article.0.id %}">
+                                        <img class="col" src="{{ c.article.0.thumbnail.url }}" alt="{{ c.article.0.header }}">
+                                    </a>
+
+                                    <!-- section header header -->
+                                    <div class="row pageIndexSectionHeader">
+                                        <a class="col" href="{% url 'news:article' articleID=c.article.0.id %}">
+                                            <!-- date -->
+                                            <span>{{ c.article.0.last_updated|date:'d/m/y' }}</span><br>
+
+                                            <!-- header -->
+                                            <span>{{ c.article.0.header }}</span>
+                                        </a>
+                                    </div>
+
+                                    <!-- section subheader -->
+                                    {% for a in c.article %}
+                                        {% if forloop.counter0 != 0 %}
+                                            <div class="row pageIndexSectionSubHeader">
+                                                <a class="col" href="{% url 'news:article' articleID=a.id %}">
+                                                    <hr>
+                                                    <!-- date -->
+                                                    <span>{{ a.last_updated|date:'d/m/y' }}</span><br>
+
+                                                    <!-- subheader -->
+                                                    <span>{{ a.header }}</span>
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
 
 
