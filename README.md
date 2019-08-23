@@ -1,5 +1,23 @@
-- This is an web application that allow to upload and display news -
+# New-Display
 
-Index page displays uploaded news.
+This app displays and uploads news.
 
-Edit page is where user upload and edit news article.
+1/ Download this repository
+
+2/ Type in following commands:
+
+```
+cd NewsDisplay
+```
+
+```
+python manage.py runserver
+```
+
+Editor default credential:
+
+Username: ```admin123```
+
+Password: ```admin123```
+
+You can change it via django shell command or directly edit database (sqlite3)
