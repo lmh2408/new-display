@@ -14,7 +14,7 @@ cd NewsDisplay
 python manage.py runserver
 ```
 
-Editor default credential:
+Access editor mode via ```/editor``` route. Editor default credential:
 
 Username: ```admin123```
 
